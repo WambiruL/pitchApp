@@ -1,0 +1,12 @@
+Have 
+promotion pitch
+interview pitch
+product pitch
+game pitch
+
+classes;
+pitch
+comment
+upvotes
+downvotes
+User
