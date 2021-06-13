@@ -16,7 +16,7 @@ def index():
     pitches=Pitch.query.all()
     promotion=Pitch.query.filter_by(category='Promotion').all()
     interview=Pitch.query.filter_by(category='Events').all()
-    games=Pitch.query.filter_by(categpry='Games').all()
+    games=Pitch.query.filter_by(category='Games').all()
     product=Pitch.query.filter_by(category='Product').all()
 
     return render_template('index.html', title=title, pitches=pitches, interview=interview,product=product, promotion=promotion, games=games )

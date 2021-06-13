@@ -1,6 +1,4 @@
 from datetime import datetime
-
-from sqlalchemy.orm import backref
 from . import db
 
 class Pitch(db.Model):
@@ -11,8 +9,6 @@ class Pitch(db.Model):
     pitch_content=db.Column(db.String(2000))
     category=db.Column(db.String)
     posted=db.Column(db.DateTime, default=datetime.utcnow)
-    comment=db.relationship('Comment', backref='pitch',lazy='dynamic') 
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     likes = db.Column(db.Integer)
     dislikes = db.Column(db.Integer)
 
