@@ -1,3 +1,4 @@
+from app.models import Pitch
 from flask import render_template
 from . import main
 
@@ -12,6 +13,10 @@ def index():
 
 
     #categories
-    
+    pitches=Pitch.query.all()
+    promotion=Pitch.query.filter_by(category='Promotion').all()
+    interview=Pitch.query.filter_by(category='Events').all()
+    games=Pitch.query.filter_by(categpry='Games').all()
+    product=Pitch.query.filter_by(category='Product').all()
 
-    return render_template('index.html', title=title)
+    return render_template('index.html', title=title, pitches=pitches, interview=interview,product=product, promotion=promotion, games=games )

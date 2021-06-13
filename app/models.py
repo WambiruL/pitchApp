@@ -12,6 +12,14 @@ class Pitch(db.Model):
     category=db.Column(db.String)
     posted=db.Column(db.DateTime, default=datetime.utcnow)
     comment=db.relationship('Comment', backref='pitch',lazy='dynamic') 
-    upvote = db.relationship('Upvote',backref='pitch',lazy='dynamic')
-    downvote = db.relationship('Downvote',backref='pitch',lazy='dynamic')
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    likes = db.Column(db.Integer)
+    dislikes = db.Column(db.Integer)
+
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
+
+        
+    def __repr__(self):
+        return f'Pitch {self.post}'
