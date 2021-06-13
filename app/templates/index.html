@@ -4,5 +4,22 @@
 {% block content%}
 {% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+<link rel="stylesheet" type="text" href="{{url_for('static',filename='styles.css')}}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+{% endblock %}
+
+<div class="container-fluid-front">
+    <h1>ONE MINUTE PITCH:</h1>
+    <p>In life, you only have 60 seconds to impress someone. 1 minute can make or break you. <br>
+        How do we make sure that you use your 1 minute to actually say something meaningful?</p>
+
+    <button>
+        <a class="btn btn-primary" href="/new_pitch">NEW PITCH</a>
+    </button>
+    <button>
+        <a class="btn btn-primary" href="/pitches">VIEW PITCHES</a>
+    </button>
+</div>
+
 {% endblock %}
