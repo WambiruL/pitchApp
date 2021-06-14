@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% macro display_pitches(pitches) %}
+
+<div class="container-fluid-macro">
+    <div class="card-columns">
+        {% if pitches %}
+        {% for pitch in pitches%}
+        <div class="card">
+            <div class="card-body">
+                <p>{{pitch.piches}}</p>
+                <p>Category:{{pitch.category}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor%}
+    {%endif%}
+</div>
+
+
+{%endmacro%}

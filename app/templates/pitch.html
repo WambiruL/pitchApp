@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% from 'macros.html' import display_pitches%}
+
+{% block content%}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" type="text" href="{{url_for('static',filename='styles.css')}}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+{% endblock %}
+
+<div>{{display_pitches(pitches)}}</div>
+
+{% endblock %}
