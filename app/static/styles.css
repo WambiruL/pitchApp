@@ -1,12 +1,11 @@
 .container-fluid-front{
     text-align: center;
-    font-size: 60px;
-    
-   
+    font-size: 60px;   
 }
 body{
     background-color: rgb(178, 213, 243);
     font-family: 'Mountains of Christmas', cursive;
+    font-size: larger;
 }
 button{
     font-size: larger;
@@ -19,4 +18,23 @@ button{
 button:hover {
     background-color: #010300; 
     
-  }
+}
+
+.container-fluid{
+    color: rgb(2, 2, 2);
+    font-size: 50px;
+    text-align: center;
+    background-image: url('./images/80qW.gif');
+    background-size: 950px;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+form{
+    width: 550px;
+    height: 450px;
+    margin: auto;
+    position: relative;
+
+}

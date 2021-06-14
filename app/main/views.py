@@ -34,7 +34,7 @@ def new_pitch():
     pitch_form=PitchForm()
     if pitch_form.validate_on_submit():
         title=pitch_form.title.data
-        pitch=pitch_form.text.data
+        pitch=pitch_form.pitch.data
         category=pitch_form.category.data
 
         new_pitch=Pitch(pitch_title=title, pitch_content=pitch, category=category)
