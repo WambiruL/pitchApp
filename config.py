@@ -4,7 +4,6 @@ class Config:
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lorraine:1234@localhost/pitchapp'
 
-
 class ProdConfig(Config):
     '''
     Production  configuration child class

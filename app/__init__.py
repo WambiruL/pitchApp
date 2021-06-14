@@ -2,6 +2,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from config import config_options
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 bootstrap=Bootstrap()
 db=SQLAlchemy()
@@ -13,6 +14,8 @@ def create_app(config_name):
 
 # Setting up configuration
     app.config.from_object(config_options[config_name])
+    SECRET_KEY = os.urandom(32)
+    app.config['SECRET_KEY'] = SECRET_KEY
 
 #initializing extensions
     bootstrap.init_app(app)
