@@ -1,6 +1,7 @@
 from app.main.forms import PitchForm
 from app.models import Pitch
 from flask import render_template, url_for,redirect
+from flask_login import login_required
 from . import main
 
 #views
@@ -30,6 +31,7 @@ def pitches():
     return render_template('pitch.html',pitches=pitches)
 
 @main.route('/new_pitch', methods=['GET', 'POST'])
+@login_required
 def new_pitch():
     pitch_form=PitchForm()
     if pitch_form.validate_on_submit():
