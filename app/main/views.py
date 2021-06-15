@@ -42,7 +42,7 @@ def new_pitch():
         new_pitch=Pitch(pitch_title=title, pitch_content=pitch, category=category)
 
         new_pitch.save_pitch()
-        return redirect(url_for('.index'))
+        return redirect(url_for('.pitches'))
 
     title='New Pitch'
 
