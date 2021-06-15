@@ -3,6 +3,7 @@ class Config:
     General configuration parent class
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lorraine:1234@localhost/pitchapp'
+    UPLOADED_PHOTOS_DEST ='app/static/images'
 
 class ProdConfig(Config):
     '''
