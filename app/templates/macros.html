@@ -1,20 +1,41 @@
 {% extends 'base.html' %}
 {% macro display_pitches(pitches) %}
 
+
 <div class="container-fluid-macro">
-    <div class="card-columns">
+    <div class="card-rows">
         {% if pitches %}
         {% for my_pitch in pitches%}
-        <div class="card">
-            <div class="card-body">
-                <p>{{my_pitch}}</p>
-                <p>Category:{{my_pitch.category}}</p>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <p>{{my_pitch.pitch_content}}</p>
+                    <p>Category:{{my_pitch.category}}</p>
+                </div>
+                <div class="card-footer foot_flex d-block mx-auto">
+                    <a href="/comment/{{my_pitch.id}}"><button class="btn btn-info">Comment</button></a>
+                </div>
             </div>
         </div>
+        
     </div>
     {% endfor%}
     {%endif%}
+    
 </div>
-
+{%endmacro%}
+{%macro display_comments(comments)%}
+<div class="card-columns">
+    {% for comment in comments %}
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <p>{{comment.comment}}</p>
+        </div>
+         <p class="text-center">{{comment.pitch.title}}</p>
+        </div>
+    </div>
+    {% endfor %}
 
 {%endmacro%}

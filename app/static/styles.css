@@ -42,4 +42,12 @@ form{
     background-color: rgb(7, 7, 56);
     display: flex;
 }
+.card{
+    border: 10px solid red;
+    font-size: 50px;
+    width:400px;
+    padding: 20px;
+    margin: 3px;
+
+}
 

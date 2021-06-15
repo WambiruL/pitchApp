@@ -69,4 +69,4 @@ def comment(pitch_id):
         new_comments=[new_comment]
         print(new_comments)
         return redirect(url_for('.comment', pitch_id=pitch_id))
-    return render_template('comment.html', form=form, pitch=pitch, comments=comments,user=user)
+    return render_template('comments.html', form=form, pitch=pitch, comments=comments,user=user)

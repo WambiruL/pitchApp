@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% from 'macros.html' import display_pitches%}
+{%from 'macros.html' import display_comments%}
 
 {% block content%}
 {% block styles %}
@@ -10,5 +11,6 @@
 {% endblock %}
 
 <div>{{display_pitches(pitches)}}</div>
+<div>{{display_comments(comments)}}</div>
 
 {% endblock %}
