@@ -4,11 +4,11 @@
 <div class="container-fluid-macro">
     <div class="card-columns">
         {% if pitches %}
-        {% for pitch in pitches%}
+        {% for my_pitch in pitches%}
         <div class="card">
             <div class="card-body">
-                <p>{{pitch.pitches}}</p>
-                <p>Category:{{pitch.category}}</p>
+                <p>{{my_pitch}}</p>
+                <p>Category:{{my_pitch.category}}</p>
             </div>
         </div>
     </div>
