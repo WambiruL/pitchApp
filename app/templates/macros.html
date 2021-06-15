@@ -13,7 +13,7 @@
                     <p>Category:{{my_pitch.category}}</p>
                 </div>
                 <div class="card-footer foot_flex d-block mx-auto">
-                    <a href="/comment/{{my_pitch.id}}"><button class="btn btn-info">Comment</button></a>
+                    <a href="/comment/{{my_pitch.id}}"><button class="btn btn-danger">Comment</button></a>
                 </div>
             </div>
         </div>
@@ -27,15 +27,14 @@
 {%macro display_comments(comments)%}
 <div class="card-columns">
     {% for comment in comments %}
-    <div class="card">
-        <div class="card-header">
-        </div>
-        <div class="card-body">
-            <p>{{comment.comment}}</p>
-        </div>
-         <p class="text-center">{{comment.pitch.title}}</p>
+    <div class="card-comment">
+        <div class="col-md-3">
+            <div class="card-body">
+                <p>{{comment.comment}}</p>
+            </div>
+            <p class="text-center">{{comment.pitch.title}}</p>
         </div>
     </div>
     {% endfor %}
-
+</div>
 {%endmacro%}
