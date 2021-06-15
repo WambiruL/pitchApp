@@ -1,4 +1,6 @@
 from datetime import datetime
+
+from sqlalchemy.orm import backref
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
@@ -17,8 +19,8 @@ class Pitch(db.Model):
     pitch_content=db.Column(db.String(2000))
     category=db.Column(db.String)
     posted=db.Column(db.DateTime, default=datetime.utcnow)
-    likes = db.Column(db.Integer)
-    dislikes = db.Column(db.Integer)
+    user_id=db.Column(db.String)
+    comment=db.relationship('Comment', backref='pitch', lazy='dynamic')
 
     def save_pitch(self):
         db.session.add(self)
@@ -50,4 +52,27 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
+
+class Comment(db.Model):
+    __tablename__='comments'
+    id=db.Column(db.Integer, primary_key=True)
+    user_id=db.Column(db.Integer, db.ForeignKey('users.id'))
+    pitch_id=db.Column(db.Integer,db.ForeignKey('pitch.id'))
+    comment=db.Column(db.Text())
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls,pitch_id):
+        comments=Comment.query.filter_by(pitch_id=pitch_id).all()
+        return comments
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return f'Comments: {self.comment}'
        
