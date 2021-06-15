@@ -1,7 +1,7 @@
-from app.main.forms import PitchForm
-from app.models import Pitch
+from app.main.forms import CommentForm, PitchForm
+from app.models import Comment, Pitch, User
 from flask import render_template, url_for,redirect
-from flask_login import login_required
+from flask_login import login_required,current_user
 from . import main
 
 #views
@@ -47,3 +47,25 @@ def new_pitch():
     title='New Pitch'
 
     return render_template('new_pitch.html', title=title, pitch_form=pitch_form)
+
+@main.route('/comment/<int:pitch_id>', methods=['GET','POST'])
+@login_required
+def comment(pitch_id):
+    form=CommentForm()
+    pitch=Pitch.query.get(pitch_id)
+    user=User.query.all()
+    comments=Comment.query.filter_by(pitch_id=pitch_id).all()
+    if form.validate_on_submit():
+        comment=form.comment.data
+        pitch_id=pitch_id
+        user_id=current_user._get_current_object().id
+        new_comment= Comment(
+            comment=comment,
+            pitch_id=pitch_id,
+            user_id=user_id
+        )
+
+        new_comment.save()
+        new_comments=[new_comment]
+        return redirect(url_for('.comment', pitch_id=pitch_id))
+    return render_template('comment.html', form=form, pitch=pitch, comments=comments,user=user)
