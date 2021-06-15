@@ -36,5 +36,9 @@ form{
     height: 450px;
     margin: auto;
     position: relative;
+    font-size: 30px;
 
+}
+.container-fluid-nav{
+    background-color: rgb(7, 7, 56);
 }
