@@ -1,5 +1,5 @@
 from app.main.forms import CommentForm, PitchForm,UpdateProfile
-from app.models import Comment, Pitch, User
+from app.models import Comment, Pitch, Upvote, User
 from flask import render_template, url_for,redirect,abort,request
 from flask_login import login_required,current_user
 from . import main
@@ -110,4 +110,20 @@ def update_profile(uname):
         #user.profile_pic_path = path
         #db.session.commit()
     #return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/upvote/<int:id>',methods = ['POST','GET'])
+@login_required
+def upvote(id):
+    get_pitches = Upvote.get_upvotes(id)
+    valid_string = f'{current_user.id}:{id}'
+    for pitch in get_pitches:
+        to_str = f'{pitch}'
+        print(valid_string+" "+to_str)
+        if valid_string == to_str:
+            return redirect(url_for('main.index',id=id))
+        else:
+            continue
+    new_vote = Upvote(user = current_user, pitch_id=id)
+    new_vote.save()
+    return redirect(url_for('main.index',id=id))
 
