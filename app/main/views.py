@@ -1,5 +1,5 @@
 from app.main.forms import CommentForm, PitchForm,UpdateProfile
-from app.models import Comment, Pitch, Upvote, User
+from app.models import Comment, Downvote, Pitch, Upvote, User
 from flask import render_template, url_for,redirect,abort,request
 from flask_login import login_required,current_user
 from . import main
@@ -126,4 +126,20 @@ def upvote(id):
     new_vote = Upvote(user = current_user, pitch_id=id)
     new_vote.save()
     return redirect(url_for('main.index',id=id))
+
+@main.route('/dislike/<int:id>',methods = ['POST','GET'])
+@login_required
+def dislike(id):
+    pitch = Downvote.get_downvotes(id)
+    valid_string = f'{current_user.id}:{id}'
+    for pitch in pitches:
+        to_str = f'{pitch}'
+        print(valid_string+" "+to_str)
+        if valid_string == to_str:
+            return redirect(url_for('main.index',id=id))
+        else:
+            continue
+    new_downvote = Downvote(user = current_user, pitch_id=id)
+    new_downvote.save()
+    return redirect(url_for('main.index',id = id))
 
