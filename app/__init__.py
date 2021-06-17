@@ -20,16 +20,12 @@ login_manager.login_view='auth.login'
 def create_app(config_name):
     app=Flask(__name__)
     
-    
-
 
 # Setting up configuration
     app.config.from_object(config_options[config_name])
     SECRET_KEY = os.urandom(32)
     app.config['SECRET_KEY'] = SECRET_KEY
   #  app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd()
-    
-
 
 #initializing extensions
     bootstrap.init_app(app)
