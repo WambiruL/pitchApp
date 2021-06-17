@@ -114,32 +114,32 @@ def update_profile(uname):
 @main.route('/upvote/<int:id>',methods = ['POST','GET'])
 @login_required
 def upvote(id):
-    get_pitches = Upvote.get_upvotes(id)
+    pitch = Upvote.get_upvotes(id)
     valid_string = f'{current_user.id}:{id}'
-    for pitch in get_pitches:
-        to_str = f'{pitch}'
+    for p in pitch:
+        to_str = f'{p}'
         print(valid_string+" "+to_str)
         if valid_string == to_str:
-            return redirect(url_for('main.index',id=id))
+            return redirect(url_for('.pitches',id=id))
         else:
             continue
     new_vote = Upvote(user = current_user, pitch_id=id)
     new_vote.save()
-    return redirect(url_for('main.index',id=id))
+    return redirect(url_for('.pitches',id=id))
 
-@main.route('/dislike/<int:id>',methods = ['POST','GET'])
+@main.route('/downvote/<int:id>',methods = ['POST','GET'])
 @login_required
-def dislike(id):
+def downvote(id):
     pitch = Downvote.get_downvotes(id)
     valid_string = f'{current_user.id}:{id}'
-    for pitch in pitches:
-        to_str = f'{pitch}'
+    for p in pitch:
+        to_str = f'{p}'
         print(valid_string+" "+to_str)
         if valid_string == to_str:
-            return redirect(url_for('main.index',id=id))
+            return redirect(url_for('.pitches',id=id))
         else:
             continue
     new_downvote = Downvote(user = current_user, pitch_id=id)
     new_downvote.save()
-    return redirect(url_for('main.index',id = id))
+    return redirect(url_for('.pitches',id = id))
 

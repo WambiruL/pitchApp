@@ -15,7 +15,8 @@
                 <div class="card-footer foot_flex d-block mx-auto">
                     <a href="/comment/{{my_pitch.id}}"><button class="btn btn-danger">Comment</button></a>
                 </div>
-                
+                <a href="/upvote/{{my_pitch.id}}"><button class="btn btn-success">Like {{my_pitch.upvote.count()}}</button></a>
+                <a href="/downvote/{{my_pitch.id}}"><button class="btn btn-info">Dislike {{my_pitch.downvote.count()}}</button></a>
             </div>
         </div>
         
@@ -39,3 +40,4 @@
     {% endfor %}
 </div>
 {%endmacro%}
+
