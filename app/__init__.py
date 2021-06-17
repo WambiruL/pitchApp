@@ -26,6 +26,8 @@ def create_app(config_name):
     SECRET_KEY = os.urandom(32)
     app.config['SECRET_KEY'] = SECRET_KEY
   #  app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd()
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('SQLALCHEMY_DATABASE_URI')
+
 #initializing extensions
     bootstrap.init_app(app)
     db.init_app(app)
