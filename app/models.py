@@ -1,6 +1,4 @@
 from datetime import datetime
-
-from sqlalchemy.orm import backref
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
@@ -12,7 +10,7 @@ def load_user(user_id):
 
 
 class Pitch(db.Model):
-    __tablename__='pitch'
+    __tablename__='pitches'
 
     id=db.Column(db.Integer,primary_key=True)
     pitch_title=db.Column(db.String)
@@ -20,9 +18,9 @@ class Pitch(db.Model):
     category=db.Column(db.String)
     posted=db.Column(db.DateTime, default=datetime.utcnow)
     user_id=db.Column(db.String)
-    comment=db.relationship('Comment', backref='pitch', lazy='dynamic')
-    upvote = db.relationship('Upvote',backref='pitch',lazy='dynamic')
-    downvote = db.relationship('Downvote',backref='pitch',lazy='dynamic')
+    comment=db.relationship('Comment', backref='pitches', lazy='dynamic')
+    upvote = db.relationship('Upvote',backref='pitches',lazy='dynamic')
+    downvote = db.relationship('Downvote',backref='pitches',lazy='dynamic')
 
     def save_pitch(self):
         db.session.add(self)
@@ -64,7 +62,7 @@ class Comment(db.Model):
     __tablename__='comments'
     id=db.Column(db.Integer, primary_key=True)
     user_id=db.Column(db.Integer, db.ForeignKey('users.id'))
-    pitch_id=db.Column(db.Integer,db.ForeignKey('pitch.id'))
+    pitch_id=db.Column(db.Integer,db.ForeignKey('pitches.id'))
     comment=db.Column(db.Text())
 
     def save(self):
@@ -87,7 +85,7 @@ class Upvote(db.Model):
     __tablename__='upvotes'
     id=db.Column(db.Integer,primary_key=True)
     user_id=db.Column(db.Integer, db.ForeignKey('users.id'))
-    pitch_id=db.Column(db.Integer, db.ForeignKey('pitch.id'))
+    pitch_id=db.Column(db.Integer, db.ForeignKey('pitches.id'))
 
     def save(self):
         db.session.add(self)
@@ -106,7 +104,7 @@ class Downvote(db.Model):
 
     id=db.Column(db.Integer,primary_key=True)
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
-    pitch_id=db.Column(db.Integer,db.ForeignKey('pitch.id'))
+    pitch_id=db.Column(db.Integer,db.ForeignKey('pitches.id'))
     
 
     def save(self):

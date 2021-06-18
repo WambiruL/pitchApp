@@ -4,8 +4,9 @@ class Config:
     '''
     General configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://lorraine:1234@localhost/pitchapp'
-    UPLOADED_PHOTOS_DEST ='app/static/images'
+    SQLALCHEMY_DATABASE_URI= 'postgresql+psycopg2://lorraine:1234@localhost/apppitch'
+   # SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
+  #  UPLOADED_PHOTOS_DEST ='app/static/images'
 
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -22,8 +23,8 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    #SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-
+   # SQLALCHEMY_DATABASE_URI ='sqlite:///site.db'
+pass
 class DevConfig(Config):
     '''
     Development  configuration child class
