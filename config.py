@@ -24,7 +24,8 @@ class ProdConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
    # SQLALCHEMY_DATABASE_URI ='sqlite:///site.db'
-pass
+    SQLALCHEMY_DATABASE_URI= 'postgres://nryiboddqrgrqm:0b5247f70271b5ac51e536049b85e13f46977bd985ae7fdfe49f27bd09c6b201@ec2-35-174-35-242.compute-1.amazonaws.com:5432/ddatno0d7s23g6'
+
 class DevConfig(Config):
     '''
     Development  configuration child class
