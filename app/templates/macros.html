@@ -4,7 +4,7 @@
 
 <div class="container-fluid-macro">
     <div class="card-rows">
-        {% if pitches %}
+        {%if pitches %}
         {% for my_pitch in pitches%}
         <div class="col-md-4">
             <div class="card">
@@ -19,10 +19,11 @@
                 <a href="/downvote/{{my_pitch.id}}"><button class="btn btn-info">Dislike {{my_pitch.downvote.count()}}</button></a>
             </div>
         </div>
+        {% endfor%}
+        {%endif%}
         
     </div>
-    {% endfor%}
-    {%endif%}
+    
     
 </div>
 {%endmacro%}
