@@ -13,8 +13,7 @@ def index():
     """
 
     title='Home-Welcome to One Minute Pitch'
-
-
+    
     #categories
     pitches=Pitch.query.all()
     promotion=Pitch.query.filter_by(category='Promotion').all()
